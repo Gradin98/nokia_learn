@@ -97,7 +97,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <HeapCommitSize>
       </HeapCommitSize>
-      <StackReserveSize>10000000</StackReserveSize>
+      <StackReserveSize>
+      </StackReserveSize>
+      <StackCommitSize>419430400</StackCommitSize>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

@@ -11,7 +11,7 @@ Student::Student(std::string nume, int an) {
 	this->medie = 0.00;
 }
 
-Student::~Student() {}
+Student::~Student() = default;
 
 int Student::getAn()
 {
@@ -40,12 +40,12 @@ void Student::addCurs(std::string nume, float nota) {
 	this->generateMedie();
 }
 
-void Student::addCursuri(std::list<Curs> cursuri) {
+void Student::addCursuri(std::vector<Curs> cursuri) {
 	this->cursuri = cursuri;
 	this->generateMedie();
 }
 
-std::list<Curs> Student::getCursuri() {
+std::vector<Curs> Student::getCursuri() {
 	return this->cursuri;
 }
 
@@ -77,10 +77,19 @@ bool Student::operator> (const Student& other) const {
 	return medie < other.medie;
 }
 
-bool Student::sortByName(const Student& a, const Student& b)
+void* Student::operator new(size_t size)
 {
-	return a.medie < b.medie;
+	void * p = malloc(size); 
+	return p;
 }
+
+bool Student::sortByMedie(const Student& a, const Student& b)
+{
+	return a.medie > b.medie;
+}
+
+
+
 
 
 

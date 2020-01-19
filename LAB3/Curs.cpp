@@ -16,7 +16,8 @@ float Curs::getNota() {
 
 Curs& Curs::operator=(Curs arg) noexcept
 {
-	std::swap(*this, arg);
-	return *this;
+	//std::swap(nota, arg.nota);
+	//std::swap(nume, arg.nume);
+    return *this;
 }
 

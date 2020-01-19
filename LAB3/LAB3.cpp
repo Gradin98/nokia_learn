@@ -8,9 +8,10 @@
 #include <algorithm>
 
 float RandomFloat(float a, float b);
-std::list<Curs> generateCoursList();
-void sortStudenti(std::vector<Student> studenti);
-
+std::vector<Curs> generateCoursList();
+void sortStudenti(std::vector<Student>& studenti);
+void checkMedie(const std::vector<Student>& studenti);
+void removeFromList(std::vector<Student>& studenti);
 
 
 int main()
@@ -34,12 +35,30 @@ int main()
 	studenti.push_back(student4);
 	studenti.push_back(student5);
 	
+	
+
 	for (auto student : studenti) {
 		student.afisare();
 	}
 
 	sortStudenti(studenti);
 
+	std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
+
+	for (auto student : studenti) {
+		student.afisare();
+	}
+
+	std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
+	checkMedie(studenti);
+	
+	std::cout << std::endl << std::endl << std::endl << std::endl << std::endl;
+
+	removeFromList(studenti);
+	
+	for (auto student : studenti) {
+		student.afisare();
+	}
 }
 
 float RandomFloat(float a, float b) {
@@ -49,8 +68,8 @@ float RandomFloat(float a, float b) {
 	return a + r;
 }
 
-std::list<Curs> generateCoursList() {
-	std::list<Curs> cursuri;
+std::vector<Curs> generateCoursList() {
+	std::vector<Curs> cursuri;
 	
 
 	for (auto i = 0; i < 10; i++) {
@@ -62,17 +81,29 @@ std::list<Curs> generateCoursList() {
 	return cursuri;
 }
 
-void sortStudenti(std::vector<Student> studenti) {
-	//struct studentCompare
-	//{
-	//	bool operator()(Student const& a, Student const& b)
-	//	{
-	//		return a.getMedie() > b.getMedie();
-	//	}
-	//};
+void sortStudenti(std::vector<Student>& studenti) {
+	std::sort(studenti.begin(), studenti.end(), Student::sortByMedie);
 
 	
-	std::sort(studenti.begin(), studenti.end(), Student::sortByName);
+}
 
-	std::cout << "ceva";
+void checkMedie(const std::vector<Student>& studenti) {
+	for (auto student : studenti) {
+		if (student.getMedie() > 8 && student.getAn() == 3) {
+			student.afisare();
+		}
+	}
+}
+
+void removeFromList(std::vector<Student>& studenti) {
+
+	auto i = std::begin(studenti);
+
+	while (i != std::end(studenti)) {
+		// Do some stuff
+		if (i->getMedie() < 5)
+			i = studenti.erase(i);
+		else
+			++i;
+	}
 }
