@@ -1,0 +1,7 @@
+﻿  Caine.cpp
+  CaineCuPete.cpp
+  CaineFaraPete.cpp
+  cap18.cpp
+  Generating Code...
+D:\projects\c++\EXERCITII C++\cap18\CaineFaraPete.cpp(7): warning C4717:  'CaineFaraPete::getCuloare': recursive on all control paths, function will cause runtime stack overflow
+  cap18.vcxproj -> D:\projects\c++\EXERCITII C++\Debug\cap18.exe
